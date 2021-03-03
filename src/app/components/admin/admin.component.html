@@ -1,0 +1,68 @@
+<div style="margin-left: 10%; margin-right:10%;">
+    <table class="table table-bordered table-inverse">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Model</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let bike of bikes">
+        <td>
+            <a [routerLink]="['/admin/view/', bike.id]">{{bike.name}}</a>
+        </td>
+        <td>{{bike.email}}</td>
+        <td>{{bike.phone}}</td>
+        <td>{{bike.model}}</td>
+        </tbody>
+    </table>
+</div> 
+<hr>
+<div class="container">
+    <h3>Get Bike</h3>
+    <form>
+        <div class="mb-3">
+            <label for="bikeIdGet" class="form-label">Bike Id</label>
+            <input #bikeIdGet type="text" class="form-control" id="bikeIdGet">
+        </div>
+        <div *ngIf="messageGet != ''" style="margin-bottom: 20px;" [ngStyle]="{'color': getColor}">
+            {{messageGet}}
+        </div>
+        <button type="submit" class="btn btn-success" (click)="getBike(+bikeIdGet.value)">Get</button>
+    </form>
+    <div *ngIf="currentBike != null">
+        <table class="table table-bordered table-inverse">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Model</th>
+            </tr>
+            </thead>
+            <tbody>
+            <td>
+                <a [routerLink]="['/admin/view/', currentBike.id]">{{currentBike.name}}</a>
+            </td>
+            <td>{{currentBike.email}}</td>
+            <td>{{currentBike.phone}}</td>
+            <td>{{currentBike.model}}</td>
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <h3>Delte Bike</h3>
+    <form>
+        <div class="mb-3">
+            <label for="bikeIdDelete" class="form-label">Bike Id</label>
+            <input #bikeIdDelete  type="text" class="form-control" id="bikeIdDelete">
+        </div>
+        <div *ngIf="messageDelete != ''" style="margin-bottom: 20px;" [ngStyle]="{'color': deleteColor}">
+            {{messageDelete}}
+        </div>
+        <button type="submit" class="btn btn-success" (click)="deleteBike(+bikeIdDelete.value)">Delete</button>
+    </form>
+</div>

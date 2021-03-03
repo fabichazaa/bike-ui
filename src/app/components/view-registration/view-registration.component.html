@@ -1,0 +1,22 @@
+<div class="container">
+    <div *ngIf="currentBike != null">
+    <table class="table table-bordered table-inverse">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Model</th>
+        </tr>
+        </thead>
+        <tbody>
+        <td>
+            <a [routerLink]="['/admin/view/', currentBike.id]">{{currentBike.name}}</a>
+        </td>
+        <td>{{currentBike.email}}</td>
+        <td>{{currentBike.phone}}</td>
+        <td>{{currentBike.model}}</td>
+        </tbody>
+    </table>
+</div>
+</div>
